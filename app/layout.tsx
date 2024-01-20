@@ -3,6 +3,7 @@
 import { useSelectedLayoutSegment } from 'next/navigation';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Link from 'next/link';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -18,9 +19,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div>loginSegments: {loginSegments}</div>
-        <section>{children}</section>
-        <section>{auth}</section>
+        <section className="p-20">
+          <nav className="flex space-x-2 text-blue-300 underline">
+            <Link href="/">Main</Link>
+            <Link href="/login">Login</Link>
+          </nav>
+          <div>loginSegments: {loginSegments}</div>
+          <section>{children}</section>
+          <section>{auth}</section>
+        </section>
       </body>
     </html>
   );
