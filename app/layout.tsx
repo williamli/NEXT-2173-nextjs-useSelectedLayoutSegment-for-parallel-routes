@@ -26,9 +26,15 @@ export default function RootLayout({
         <section className="p-20">
           <nav className="flex space-x-2 text-blue-300 underline">
             <Link href="/">Main</Link>
+            <Link href="/foo">Foo (regular page)</Link>
             <Link href="/login">Login (/app/@auth/login)</Link>
             <Link href="/reset">Reset (/app/@auth/reset)</Link>
-            <Link href="/foo">Foo (regular page)</Link>
+            <Link href="/reset/withEmail">
+              Reset with Email (/app/@auth/reset/withEmail)
+            </Link>
+            <Link href="/reset/withMobile">
+              Reset with Mobile (/app/@auth/reset/withMobile)
+            </Link>
           </nav>
           <div>loginSegments (parallel route): {loginSegmentsOutput}</div>
           <div>routeSegmentsOutput (app route): {routeSegmentsOutput}</div>
