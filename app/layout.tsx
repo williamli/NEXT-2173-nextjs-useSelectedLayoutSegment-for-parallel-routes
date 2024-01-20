@@ -1,6 +1,9 @@
 'use client';
 
-import { useSelectedLayoutSegment } from 'next/navigation';
+import {
+  useSelectedLayoutSegment,
+  useSelectedLayoutSegments,
+} from 'next/navigation';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Link from 'next/link';
@@ -17,7 +20,13 @@ export default function RootLayout({
 }>) {
   const loginSegments = useSelectedLayoutSegment('auth');
   const routeSegments = useSelectedLayoutSegment();
-  console.log({ loginSegments, routeSegments });
+
+  console.log({
+    loginSegments,
+    routeSegments,
+    useSelectedLayoutSegments: useSelectedLayoutSegments(),
+    useSelectedLayoutSegmentsAuth: useSelectedLayoutSegments('auth'),
+  });
   const loginSegmentsOutput = `${loginSegments} (${typeof loginSegments})`;
   const routeSegmentsOutput = `${routeSegments} (${typeof routeSegments})`;
   return (
