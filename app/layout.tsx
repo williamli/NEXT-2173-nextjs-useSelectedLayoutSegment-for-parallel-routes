@@ -49,12 +49,12 @@ export default function RootLayout({
             </Link>
           </nav>
           <div className="m-4">
-            loginSegment (parallel route):{' '}
-            <div id="loginSegment">{loginSegmentOutput}</div>
-          </div>
-          <div className="m-4">
             navSegment (parallel route):{' '}
             <div id="navSegment">{navSegmentOutput}</div>
+          </div>
+          <div className="m-4">
+            loginSegment (parallel route):{' '}
+            <div id="loginSegment">{loginSegmentOutput}</div>
           </div>
           <div className="m-4">
             routeSegment (app route):{' '}
