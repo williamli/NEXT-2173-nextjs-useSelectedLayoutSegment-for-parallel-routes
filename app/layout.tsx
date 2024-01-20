@@ -41,11 +41,11 @@ export default function RootLayout({
               Reset with Mobile (/app/@auth/reset/withMobile)
             </Link>
           </nav>
-          <div>
+          <div className="m-4">
             loginSegment (parallel route):{' '}
             <div id="loginSegment">{loginSegmentOutput}</div>
           </div>
-          <div>
+          <div className="m-4">
             routeSegment (app route):{' '}
             <div id="routeSegment">{routeSegmentOutput}</div>
           </div>
