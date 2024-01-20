@@ -10,25 +10,30 @@ import './globals.css';
 export default function RootLayout({
   children,
   auth,
+  nav,
 }: Readonly<{
   children: React.ReactNode;
   auth: React.ReactNode;
+  nav: React.ReactNode;
 }>) {
   const loginSegment = useSelectedLayoutSegment('auth');
+  const navSegment = useSelectedLayoutSegment('nav');
   const routeSegment = useSelectedLayoutSegment();
 
   console.log({
     loginSegment,
     routeSegment,
+    navSegment,
     useSelectedLayoutSegments: useSelectedLayoutSegments(),
     useSelectedLayoutSegmentsAuth: useSelectedLayoutSegments('auth'),
   });
   const loginSegmentOutput = `${loginSegment} (${typeof loginSegment})`;
+  const navSegmentOutput = `${navSegment} (${typeof navSegment})`;
   const routeSegmentOutput = `${routeSegment} (${typeof routeSegment})`;
   return (
     <html lang="en">
       <body>
-        <section className="p-20">
+        <section className="p-10">
           <nav className="flex space-x-2 text-blue-300 underline">
             <Link href="/">Main</Link>
             <Link href="/foo">Foo (regular page)</Link>
@@ -46,11 +51,16 @@ export default function RootLayout({
             <div id="loginSegment">{loginSegmentOutput}</div>
           </div>
           <div className="m-4">
+            navSegment (parallel route):{' '}
+            <div id="navSegment">{navSegmentOutput}</div>
+          </div>
+          <div className="m-4">
             routeSegment (app route):{' '}
             <div id="routeSegment">{routeSegmentOutput}</div>
           </div>
-          <section>{children}</section>
+          <section>{nav}</section>
           <section>{auth}</section>
+          <section>{children}</section>
         </section>
       </body>
     </html>
