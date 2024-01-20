@@ -4,12 +4,8 @@ import {
   useSelectedLayoutSegment,
   useSelectedLayoutSegments,
 } from 'next/navigation';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import Link from 'next/link';
 import './globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
 
 export default function RootLayout({
   children,
@@ -18,20 +14,20 @@ export default function RootLayout({
   children: React.ReactNode;
   auth: React.ReactNode;
 }>) {
-  const loginSegments = useSelectedLayoutSegment('auth');
-  const routeSegments = useSelectedLayoutSegment();
+  const loginSegment = useSelectedLayoutSegment('auth');
+  const routeSegment = useSelectedLayoutSegment();
 
   console.log({
-    loginSegments,
-    routeSegments,
+    loginSegment,
+    routeSegment,
     useSelectedLayoutSegments: useSelectedLayoutSegments(),
     useSelectedLayoutSegmentsAuth: useSelectedLayoutSegments('auth'),
   });
-  const loginSegmentsOutput = `${loginSegments} (${typeof loginSegments})`;
-  const routeSegmentsOutput = `${routeSegments} (${typeof routeSegments})`;
+  const loginSegmentOutput = `${loginSegment} (${typeof loginSegment})`;
+  const routeSegmentOutput = `${routeSegment} (${typeof routeSegment})`;
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <section className="p-20">
           <nav className="flex space-x-2 text-blue-300 underline">
             <Link href="/">Main</Link>
@@ -45,8 +41,14 @@ export default function RootLayout({
               Reset with Mobile (/app/@auth/reset/withMobile)
             </Link>
           </nav>
-          <div>loginSegments (parallel route): {loginSegmentsOutput}</div>
-          <div>routeSegmentsOutput (app route): {routeSegmentsOutput}</div>
+          <div>
+            loginSegment (parallel route):{' '}
+            <div id="loginSegment">{loginSegmentOutput}</div>
+          </div>
+          <div>
+            routeSegment (app route):{' '}
+            <div id="routeSegment">{routeSegmentOutput}</div>
+          </div>
           <section>{children}</section>
           <section>{auth}</section>
         </section>
